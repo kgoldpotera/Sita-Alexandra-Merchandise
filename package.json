@@ -37,6 +37,7 @@
 		"@vercel/blob": "^2.0.0",
 		"dexie": "^4.2.0",
 		"dexie-cloud-addon": "^4.2.0",
-		"resend": "^6.1.1"
+		"resend": "^6.1.1",
+		"stripe": "^19.1.0"
 	}
 }
