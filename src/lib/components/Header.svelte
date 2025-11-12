@@ -8,20 +8,22 @@
 	export let cartCount = 0;
 
 	let menuOpen = false;
-	// Are we on the homepage?
-	$: atHome = $page.url.pathname === '/';
+	// Are we on the landing page or shop?
+	$: atLanding = $page.url.pathname === '/';
+	$: atShop = $page.url.pathname === '/shop';
 </script>
 
 <header class="site-header">
 	<div class="container bar">
-		<!-- Left: hamburger on home, home button on routes -->
-		{#if atHome}
+		<!-- Left: hamburger on shop, home button on other routes, hidden on landing -->
+		{#if atLanding}
+			<div style="width:44px"></div>
+		{:else if atShop}
 			<button class="icon-btn" aria-label="Open menu" on:click={() => (menuOpen = true)}>
 				<IconMenu />
 			</button>
 		{:else}
 			<a class="icon-btn" href="/" aria-label="Go to home">
-				<!-- simple home svg, no extra icon component needed -->
 				<svg
 					width="20"
 					height="20"
@@ -65,8 +67,8 @@
 		</div>
 	</div>
 
-	<!-- Only mount the drawer on the homepage -->
-	{#if atHome}
+	<!-- Only mount the drawer on the shop page -->
+	{#if atShop}
 		<MobileMenu bind:open={menuOpen} onClose={() => (menuOpen = false)} />
 	{/if}
 </header>

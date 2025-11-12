@@ -1,7 +1,9 @@
 import type { RequestHandler } from './$types';
 import { list } from '@vercel/blob';
-import { BLOB_READ_WRITE_TOKEN } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import type { Product } from '$lib/types';
+
+const BLOB_READ_WRITE_TOKEN = env.BLOB_READ_WRITE_TOKEN;
 
 const META_PREFIX = 'products-meta/';
 

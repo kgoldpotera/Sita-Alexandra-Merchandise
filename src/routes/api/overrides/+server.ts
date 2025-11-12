@@ -1,6 +1,8 @@
 import type { RequestHandler } from './$types';
 import { list } from '@vercel/blob';
-import { BLOB_READ_WRITE_TOKEN } from '$env/static/private';
+import { env } from '$env/dynamic/private';
+
+const BLOB_READ_WRITE_TOKEN = env.BLOB_READ_WRITE_TOKEN;
 
 const PREFIX = 'overrides/';
 

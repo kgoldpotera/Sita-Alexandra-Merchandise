@@ -1,6 +1,9 @@
 import type { RequestHandler } from './$types';
 import { createHmac } from 'node:crypto';
-import { SESSION_SECRET, ADMIN_EMAILS } from '$env/static/private';
+import { env } from '$env/dynamic/private';
+
+const SESSION_SECRET = env.SESSION_SECRET ?? '';
+const ADMIN_EMAILS = env.ADMIN_EMAILS;
 
 const SID_COOKIE = 'sid';
 

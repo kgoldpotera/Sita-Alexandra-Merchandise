@@ -97,35 +97,35 @@
 
 			<ul class="menu-list" role="list">
 				<li class="menu-item">
-					<a href="#men" on:click={handleAnchorClick}>
+					<a href="/shop#men" on:click={handleAnchorClick}>
 						<span class="dot" aria-hidden="true"></span>
 						<span>Men</span>
 						<span class="chev" aria-hidden="true">›</span>
 					</a>
 				</li>
 				<li class="menu-item">
-					<a href="#women" on:click={handleAnchorClick}>
+					<a href="/shop#women" on:click={handleAnchorClick}>
 						<span class="dot" aria-hidden="true"></span>
 						<span>Women</span>
 						<span class="chev" aria-hidden="true">›</span>
 					</a>
 				</li>
 				<li class="menu-item">
-					<a href="#kids" on:click={handleAnchorClick}>
+					<a href="/shop#kids" on:click={handleAnchorClick}>
 						<span class="dot" aria-hidden="true"></span>
 						<span>Kids</span>
 						<span class="chev" aria-hidden="true">›</span>
 					</a>
 				</li>
 				<li class="menu-item">
-					<a href="#games" on:click={handleAnchorClick}>
+					<a href="/shop#games" on:click={handleAnchorClick}>
 						<span class="dot" aria-hidden="true"></span>
 						<span>Games</span>
 						<span class="chev" aria-hidden="true">›</span>
 					</a>
 				</li>
 				<li class="menu-item">
-					<a href="#accessories" on:click={handleAnchorClick}>
+					<a href="/shop#accessories" on:click={handleAnchorClick}>
 						<span class="dot" aria-hidden="true"></span>
 						<span>Accessories &amp; Collectibles</span>
 						<span class="chev" aria-hidden="true">›</span>

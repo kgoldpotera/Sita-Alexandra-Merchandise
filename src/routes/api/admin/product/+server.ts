@@ -1,8 +1,12 @@
 import type { RequestHandler } from './$types';
 import { createHmac } from 'node:crypto';
 import { put, del } from '@vercel/blob';
-import { BLOB_READ_WRITE_TOKEN, SESSION_SECRET, ADMIN_EMAILS } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import type { Product } from '$lib/types';
+
+const BLOB_READ_WRITE_TOKEN = env.BLOB_READ_WRITE_TOKEN;
+const SESSION_SECRET = env.SESSION_SECRET ?? '';
+const ADMIN_EMAILS = env.ADMIN_EMAILS;
 
 const SID_COOKIE = 'sid';
 const META_PREFIX = 'products-meta/';

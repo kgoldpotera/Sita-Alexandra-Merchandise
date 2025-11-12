@@ -1,11 +1,11 @@
 import type { RequestHandler } from './$types';
 import { createHmac } from 'node:crypto';
-import {
-	DEXIE_CLOUD_CLIENT_ID,
-	DEXIE_CLOUD_CLIENT_SECRET,
-	SESSION_SECRET
-} from '$env/static/private';
-import { VITE_DEXIE_CLOUD_URL } from '$env/static/private';
+import { env } from '$env/dynamic/private';
+
+const DEXIE_CLOUD_CLIENT_ID = env.DEXIE_CLOUD_CLIENT_ID;
+const DEXIE_CLOUD_CLIENT_SECRET = env.DEXIE_CLOUD_CLIENT_SECRET;
+const SESSION_SECRET = env.SESSION_SECRET ?? '';
+const VITE_DEXIE_CLOUD_URL = env.VITE_DEXIE_CLOUD_URL;
 
 const SID_COOKIE = 'sid';
 
