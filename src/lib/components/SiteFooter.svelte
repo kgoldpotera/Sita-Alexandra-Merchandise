@@ -23,11 +23,11 @@
 	};
 
 	const order = [
-		'tezlow',
-		'instagram',
-		'threads',
-		'tiktok',
 		'twitter',
+		'instagram',
+		'tiktok',
+		'tezlow',
+		'threads',
 		'pinterest',
 		'tumblr'
 	] as const;
@@ -180,20 +180,20 @@
 
 	/* Brand colours (based on the fixed `order` list) */
 	.social-list > li:nth-child(1) .icon {
-		color: #111111;
-	} /* Tezlow */
+		color: #1da1f2;
+	} /* Twitter */
 	.social-list > li:nth-child(2) .icon {
 		color: #e1306c;
 	} /* Instagram */
 	.social-list > li:nth-child(3) .icon {
 		color: #000000;
-	} /* Threads */
-	.social-list > li:nth-child(4) .icon {
-		color: #000000;
 	} /* TikTok */
+	.social-list > li:nth-child(4) .icon {
+		color: #111111;
+	} /* Tezlow */
 	.social-list > li:nth-child(5) .icon {
-		color: #1da1f2;
-	} /* Twitter */
+		color: #000000;
+	} /* Threads */
 	.social-list > li:nth-child(6) .icon {
 		color: #e60023;
 	} /* Pinterest */
