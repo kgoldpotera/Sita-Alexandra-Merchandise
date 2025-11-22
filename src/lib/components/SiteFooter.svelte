@@ -1,51 +1,33 @@
-<!-- src/lib/components/SiteFooter.svelte (no i18n) -->
 <script lang="ts">
 	import SocialIcon from './SocialIcon.svelte';
 
 	export let tourLinks: Record<string, string> = {
-		tezlow: '#',
 		instagram: '#',
-		threads: '#',
 		tiktok: '#',
 		twitter: '#',
-		pinterest: '#',
-		tumblr: '#'
+		youtube: '#'
 	};
 
 	export let artistLinks: Record<string, string> = {
-		tezlow: 'https://tezlow.com/SitaAlexandra',
 		instagram: 'https://instagram.com/sitaalexandraofficial',
-		threads: '#',
 		tiktok: 'https://tiktok.com/@sitaalexandra',
 		twitter: 'https://twitter.com/SitaAlexandra1',
-		pinterest: '#',
-		tumblr: '#'
+		youtube: '#' // Add specific YouTube link here
 	};
 
-	const order = [
-		'twitter',
-		'instagram',
-		'tiktok',
-		'tezlow',
-		'threads',
-		'pinterest',
-		'tumblr'
-	] as const;
+	// Defined order of appearance
+	const order = ['instagram', 'tiktok', 'twitter', 'youtube'] as const;
 
 	const labels: Record<string, string> = {
-		tezlow: 'Tezlow',
 		instagram: 'Instagram',
-		threads: 'Threads',
 		tiktok: 'TikTok',
 		twitter: 'Twitter',
-		pinterest: 'Pinterest',
-		tumblr: 'Tumblr'
+		youtube: 'YouTube'
 	};
 </script>
 
 <footer class="site-footer">
 	<section class="container footer-grid">
-		<!-- Column 1: Tour socials -->
 		<div class="social-col">
 			<h4 class="footer-heading">
 				Official Socials of the Championship Stadium Concerts World Tour
@@ -62,7 +44,6 @@
 			</ul>
 		</div>
 
-		<!-- Column 2: Sita socials -->
 		<div class="social-col">
 			<h4 class="footer-heading">Official Socials of SitaAlexandra</h4>
 			<ul class="social-list" role="list">
@@ -77,10 +58,8 @@
 			</ul>
 		</div>
 
-		<!-- Column 3: Site links -->
 		<nav class="links-col" aria-label="Site">
 			<ul class="link-list" role="list">
-				<!-- Mobile logo -->
 				<div class="footer-logo mobile-only">
 					<img src="/logos/cscwt-logo.jpg" alt="Site Logo" />
 				</div>
@@ -88,7 +67,6 @@
 		</nav>
 	</section>
 
-	<!-- Desktop logo -->
 	<div class="container footer-logo desktop-only">
 		<img src="/logos/cscwt-logo.jpg" alt="Site Logo" />
 	</div>
@@ -103,7 +81,7 @@
 		border-top: 1px solid var(--border);
 		background: var(--background);
 		padding-block: clamp(16px, 3.2vw, 36px);
-		overflow-x: clip; /* belt & suspenders */
+		overflow-x: clip;
 	}
 
 	.container {
@@ -111,7 +89,7 @@
 		width: 100%;
 		margin-inline: auto;
 		padding-inline: clamp(12px, 3vw, 24px);
-		box-sizing: border-box; /* prevents padding from causing overflow */
+		box-sizing: border-box;
 	}
 
 	.footer-grid {
@@ -142,10 +120,9 @@
 		margin: 0;
 		list-style: none;
 		justify-items: center;
-		width: 100%; /* keep items within container */
+		width: 100%;
 	}
 
-	/* Removed .link-chip to avoid unused selector warning */
 	.social-link {
 		display: inline-flex;
 		align-items: center;
@@ -158,48 +135,42 @@
 		color: var(--text-color);
 		font-weight: 600;
 		max-width: 100%;
-		flex-wrap: wrap; /* allow long labels to wrap on small screens */
+		flex-wrap: wrap;
 	}
 
 	.label {
 		white-space: normal;
-		overflow-wrap: anywhere; /* wraps “Interesting places to visit”, etc. */
+		overflow-wrap: anywhere;
 	}
 
-	/* Keep icons crisp and sized */
 	.icon {
 		inline-size: 1.1rem;
 		block-size: 1.1rem;
 		display: grid;
 		place-items: center;
 	}
-	/* Use :global to reach into the SocialIcon child component */
+
 	.social-link .icon :global(svg) {
-		filter: none !important; /* neutralize any global grayscale filters */
+		filter: none !important;
 	}
 
-	/* Brand colours (based on the fixed `order` list) */
+	/* --- Brand colours --- */
+	/* 1. Instagram */
 	.social-list > li:nth-child(1) .icon {
-		color: #1da1f2;
-	} /* Twitter */
-	.social-list > li:nth-child(2) .icon {
 		color: #e1306c;
-	} /* Instagram */
+	}
+	/* 2. TikTok */
+	.social-list > li:nth-child(2) .icon {
+		color: #000000;
+	}
+	/* 3. Twitter */
 	.social-list > li:nth-child(3) .icon {
-		color: #000000;
-	} /* TikTok */
+		color: #1da1f2;
+	}
+	/* 4. YouTube */
 	.social-list > li:nth-child(4) .icon {
-		color: #111111;
-	} /* Tezlow */
-	.social-list > li:nth-child(5) .icon {
-		color: #000000;
-	} /* Threads */
-	.social-list > li:nth-child(6) .icon {
-		color: #e60023;
-	} /* Pinterest */
-	.social-list > li:nth-child(7) .icon {
-		color: #001935;
-	} /* Tumblr */
+		color: #ff0000;
+	}
 
 	/* Logo placement */
 	.footer-logo {

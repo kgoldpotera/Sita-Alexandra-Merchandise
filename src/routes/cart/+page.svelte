@@ -3,6 +3,7 @@
 	import SignInModal from '$lib/components/SignInModal.svelte';
 	import { db } from '$lib/db';
 	import { session } from '$lib/stores/session';
+	import { get } from 'svelte/store';
 
 	let showSignIn = false;
 
@@ -15,6 +16,35 @@
 	$: me = $session.user;
 	$: items = $cartItems;
 	$: subtotal = items.reduce((n, r) => n + r.price * (r.qty ?? 1), 0);
+
+	// --- Stripe Checkout integration ---
+	async function checkout() {
+		const cart = get(cartItems);
+		if (!cart.length) {
+			alert('Your cart is empty!');
+			return;
+		}
+
+		try {
+			const res = await fetch('/api/create-checkout-session', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ cartItems: cart })
+			});
+
+			const data = await res.json();
+
+			if (data.url) {
+				window.location.href = data.url; // Redirect to Stripe Checkout
+			} else {
+				console.error('Checkout failed:', data);
+				alert('Something went wrong while starting checkout.');
+			}
+		} catch (err) {
+			console.error('Checkout error:', err);
+			alert('Unable to connect to payment server.');
+		}
+	}
 </script>
 
 <section class="cart-hero">
@@ -62,7 +92,14 @@
 				</li>
 			{/each}
 		</ul>
-		<div class="total">Subtotal <b>${subtotal.toFixed(2)}</b></div>
+		<div class="total">
+			Subtotal <b>${subtotal.toFixed(2)}</b>
+		</div>
+
+		<!-- ✅ Stripe Checkout button -->
+		<div class="checkout-row">
+			<button class="checkout-btn" on:click={checkout}> Proceed to Checkout </button>
+		</div>
 	</section>
 {/if}
 
@@ -156,5 +193,23 @@
 		justify-content: flex-end;
 		gap: 10px;
 		margin-top: 6px;
+	}
+	.checkout-row {
+		display: flex;
+		justify-content: flex-end;
+		margin-top: 20px;
+	}
+	.checkout-btn {
+		background: #000;
+		color: #fff;
+		border: none;
+		border-radius: 999px;
+		padding: 1rem 1.6rem;
+		font-weight: 800;
+		cursor: pointer;
+		transition: background 0.2s ease;
+	}
+	.checkout-btn:hover {
+		background: #222;
 	}
 </style>

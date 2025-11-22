@@ -116,6 +116,8 @@
 <ProductCarousel id="games" title="Games" items={games} />
 <ProductCarousel id="accessories" title="Accessories & Collectibles" items={accessories} />
 
+
+
 <style>
 	.shop-hero {
 		background: linear-gradient(180deg, #f6f7fb 0%, #fff 100%);

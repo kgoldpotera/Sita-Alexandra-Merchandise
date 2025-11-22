@@ -6,6 +6,7 @@
 	import { db } from '$lib/db';
 	import { session } from '$lib/stores/session';
 	import { overrides } from '$lib/stores/overrides';
+	import MediaShowcase from '$lib/components/MediaShowcase.svelte';
 
 	onMount(() => {
 		session.refresh(); // who am I?
@@ -20,4 +21,5 @@
 
 <Header />
 <slot />
+<MediaShowcase />
 <SiteFooter />
